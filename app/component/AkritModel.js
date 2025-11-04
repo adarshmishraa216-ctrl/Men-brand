@@ -74,7 +74,7 @@ const LovedByWomenSection = () => {
               <div
                 key={model.id}
                 // MODIFIED: Set fixed width for mobile card consistency, then full width on lg
-                className="relative flex-shrink-0 w-[240px] h-[360px] lg:w-full aspect-[3/4] rounded-xl overflow-hidden shadow-xl group cursor-pointer"
+                className="relative flex-shrink-0 w-[240px] h-[400px] lg:w-full aspect-[3/4] rounded-xl overflow-hidden shadow-xl group cursor-pointer"
               >
                 {/* Model Image */}
                 <NextImage

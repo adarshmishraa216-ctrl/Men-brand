@@ -10,56 +10,74 @@ const AboutAakritiSection = () => {
   const sectionBgColor = "#2A4E42"; // Dark green for background sections
 
   // Data structure for the boxes
+  // FIX: Added <br /> to force two lines for symmetrical wrapping
   const boxData = [
-    { src: "/akriti_tree-3-fill.png", label: "100% Ayurvedic" },
-    { src: "/akriti_test-tube-fill.png", label: "Lab Tested" },
-    { src: "/akriti-GMP-2page.png", label: "GMP Certified" },
-    { src: "/akriti-ISO-page2.png", label: "ISO Approved" },
+    { src: "/akriti_tree-3-fill.png", label: "100%<br />Ayurvedic" },
+    { src: "/akriti_test-tube-fill.png", label: "Lab<br />Tested" },
+    { src: "/akriti-GMP-2page.png", label: "GMP<br />Certified" },
+    { src: "/akriti-ISO-page2.png", label: "ISO<br />Approved" },
   ];
 
-  // Component to render a single box - MODIFIED FOR NEW DESIGN
-  const renderTrustBox = (box, widthClass) => (
-    <div
-      key={box.label}
-      // MODIFIED: flex-row, items-center, p-4, removed shadow-sm and h-16
-      className={`flex flex-row items-center p-4 rounded-xl ${widthClass}`}
-      style={{ backgroundColor: iconBoxBg }}
-    >
+  // Component to render a single box (Used for Mobile)
+  const renderTrustBox = (box, widthClass) => {
+    // Control variable for image scale (1.0 = no scaling). Adjust this to fine-tune the icon size.
+    const IMAGE_SCALE_FACTOR = 1.1; 
+
+    return (
       <div
-        className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center mr-3" // Adjusted size and margin for icon container
-        style={{ backgroundColor: darkGreenIconBg }}
+        key={box.label}
+        // FIX 1: Reduced padding to p-2 (from p-4 in previous code)
+        className={`flex flex-row items-center p-2 rounded-xl ${widthClass}`}
+        style={{ backgroundColor: iconBoxBg }}
       >
-        <Image src={box.src} alt={box.label} width={20} height={20} />{" "}
-        {/* Adjusted icon size if needed */}
+        <div
+          // FIX 2: Increased size to w-14 h-14 (Larger icon area)
+          // FIX 3: Reduced margin to mr-2 
+          className="shrink-0 w-14 h-14 rounded-full flex items-center justify-center mr-2" 
+          style={{ backgroundColor: darkGreenIconBg }}
+        >
+          <Image
+            src={box.src}
+            alt={box.label}
+            // FIX 4: Increased internal image size to 28x28
+            width={28} 
+            height={28}
+            // FIX 5: Apply scaling option
+            style={{ transform: `scale(${IMAGE_SCALE_FACTOR})` }}
+          />
+        </div>
+        <p
+          className="text-sm font-medium text-left" 
+          style={{ color: textColor }}
+          // Use dangerouslySetInnerHTML to render the <br /> tag
+          dangerouslySetInnerHTML={{ __html: box.label }}
+        />
       </div>
-      <p
-        className="text-sm font-medium text-left" // Ensure text is left-aligned
-        style={{ color: textColor }}
-      >
-        {box.label}
-      </p>
-    </div>
-  );
+    );
+  };
 
   return (
     <section className="relative w-full overflow-hidden bg-white">
       {/* Main Container */}
       <div className="max-w-[1440px] mx-auto flex flex-col-reverse lg:flex-row items-center justify-center py-9 px-8 lg:px-16 gap-12">
         {/* Left Section: Image of the girl (Desktop version - NO CHANGE) */}
-        <div className="hidden lg:flex shrink-0 relative w-[400px] sm:w-[500px] h-[500px] sm:h-[600px] justify-center items-center order-2 lg:order-1">
+        <div 
+          // FIX: Added lg:transform lg:translate-y-10 to move the image container down on desktop
+          className="hidden lg:flex shrink-0 relative w-[400px] sm:w-[500px] h-[500px] sm:h-[550px] justify-center items-center order-2 lg:order-1 lg:transform lg:translate-y-15"
+        >
           <Image
             src="/men brand-about-model.png"
             alt="Girl holding Aakriti product"
             layout="fill"
             objectFit="contain"
-            className="scale-110 "
+            className="scale-140"
           />
         </div>
 
         {/* Right Section: Text + Boxes + Mobile image */}
         <div className="flex flex-col items-center text-center max-w-2xl order-1 lg:order-2">
           {/* About Aakriti heading */}
-          <div className="w-full flex justify-center mb-6">
+          <div className="w-full flex justify-center mb-6 ">
             <Image
               src="/men brand-About Pranoshakti.svg"
               alt="About Aakriti Heading Graphic"
@@ -68,11 +86,10 @@ const AboutAakritiSection = () => {
             />
           </div>
 
-          {/* Girl image – visible only on mobile */}
           <div className="flex lg:hidden justify-center mb-5 w-full">
             <div
-              // MODIFIED: Added transform and -translate-y-8 (mobile/default)
-              className="relative w-[280px] sm:w-[500px] h-[300px] sm:h-[600px] transform translate-y-8"
+              // FIX: Changed '-translate-y-1' to 'translate-y-3' to move the image downwards on mobile
+              className="relative w-[280px] sm:w-[500px] h-[300px] sm:h-[600px] transform -translate-y-1 scale-125"
             >
               <Image
                 src="/men brand-about-model.png"
@@ -85,19 +102,15 @@ const AboutAakritiSection = () => {
 
           {/* Pink text (for Desktop) */}
           <h3
-            className="hidden md:block text-4xl mb-5" // Kept existing sizing/visibility
+            className="hidden md:block text-4xl mb-5" 
             style={{
-              // NEW FONT FAMILY: Limelight
               fontFamily: "Limelight",
-              // Assumes subHeadingColor holds the desired text color
               color: subHeadingColor,
-
-              // Requested parameters:
               fontWeight: 400,
-              fontSize: "50px", // Explicit size for consistency
+              fontSize: "50px", 
               lineHeight: "100%",
               textAlign: "center",
-              letterSpacing: "0%", // Often needed if 'leading-trim: NONE' is implied
+              letterSpacing: "0%", 
             }}
           >
             Power that rises from within
@@ -105,14 +118,11 @@ const AboutAakritiSection = () => {
 
           {/* Paragraph (for Desktop) */}
           <p
-            // Removed old sizing classes (text-base, mb-8) and replaced them
             className="hidden md:block mb-8 text-[20px] leading-[28px] text-center"
             style={{
               color: textColor,
-              // NEW FONT FAMILY and FONT WEIGHT
               fontFamily: "Rubik, sans-serif",
               fontWeight: 300,
-              // Line-height is handled by the Tailwind class leading-[28px]
               letterSpacing: "0%",
             }}
           >
@@ -123,7 +133,7 @@ const AboutAakritiSection = () => {
             focused, and confident.
           </p>
 
-          {/* Four Boxes - MODIFIED: Custom Mobile Layout */}
+          {/* Four Boxes - Custom Mobile Layout (Uses the fixed renderTrustBox) */}
           <div className="w-full mb-3 md:mb-1 block lg:hidden ">
             {" "}
             {/* Added px-4 for overall horizontal padding */}
@@ -138,43 +148,38 @@ const AboutAakritiSection = () => {
             </div>
           </div>
 
-          {/* Four Boxes - ORIGINAL DESKTOP GRID (NO CHANGE) */}
-          <div className="hidden lg:grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 w-full mb-3 md:mb-8">
+          {/* Four Boxes - ORIGINAL DESKTOP GRID */}
+          <div className="hidden lg:grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 w-full mb-3 md:mb-8">
             {boxData.map((box, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center justify-center p-4 rounded-xl"
+                className="flex flex-col items-center justify-center p-6 rounded-xl scale-110 "
                 style={{ backgroundColor: iconBoxBg }}
               >
                 <div
-                  className="w-16 h-16 mb-2 rounded-full flex items-center justify-center"
+                  className="w-16 h-16 mb-1 rounded-full flex items-center justify-center"
                   style={{ backgroundColor: darkGreenIconBg }}
                 >
-                  <Image src={box.src} alt={box.label} width={32} height={32} />
+                  <Image src={box.src} alt={box.label} width={40} height={40} />
                 </div>
                 <p
                   className="text-sm font-medium text-center"
                   style={{ color: textColor }}
-                >
-                  {box.label}
-                </p>
+                  // Use dangerouslySetInnerHTML to render the <br /> tag
+                  dangerouslySetInnerHTML={{ __html: box.label }}
+                />
               </div>
             ))}
           </div>
 
           {/* Pink text for Mobile */}
           <h3
-            className="block md:hidden text-5xl mt-2" // Kept visibility and spacing
+            className="block md:hidden text-5xl mt-2" 
             style={{
-              // NEW COLOR: #C5151D (Red)
               color: "#C5151D",
-              // NEW FONT FAMILY: Limelight
               fontFamily: "Limelight, cursive",
-
-              // Requested parameters:
               fontWeight: 400,
-              
-              fontSize: "30px", // Explicit size for consistency
+              fontSize: "30px", 
               lineHeight: "100%",
               textAlign: "center",
             }}
@@ -185,17 +190,6 @@ const AboutAakritiSection = () => {
       </div>
 
       {/* Bottom wave – only visible on desktop */}
-      <div
-        // 1. Hide by default (mobile/sm)
-        // 2. Hide specifically at the md breakpoint
-        // 3. Display (block) only at the lg breakpoint and above
-        className="hidden lg:block absolute bottom-0 left-0 w-full h-32"
-        style={{
-          backgroundColor: sectionBgColor,
-          clipPath: "ellipse(100% 100% at 50% 100%)",
-          zIndex: 0,
-        }}
-      ></div>
     </section>
   );
 };

@@ -1,6 +1,3 @@
-// The code remains identical to the last working version.
-// The click-outside functionality is already implemented via useEffect and useRef, 
-// which is the appropriate way to handle this behavior on interactive desktop components.
 "use client";
 import React, { useState, useRef, useEffect } from "react"; // Import useState, useRef, useEffect
 import NextImage from "next/image";
@@ -8,15 +5,15 @@ import NextImage from "next/image";
 const FAQSection = () => {
   // Styles and Colors
   const sectionBgColor = "#FFFFFF";
-  const darkGrayColor = '#666666'; // A common dark gray
-const redColor = '#C5151D';
-const headingFontFamily = 'Rubik, sans-serif'; // Or Inter, or your preferred sans-serif
-const headingFontWeight = 600; // Semi-bold for emphasis
-const headingFontSize = '36px';
+  const darkGrayColor = "#666666"; // A common dark gray
+  const redColor = "#C5151D";
+  const headingFontFamily = "Rubik, sans-serif"; // Or Inter, or your preferred sans-serif
+  const headingFontWeight = 600; // Semi-bold for emphasis
+  const headingFontSize = "36px";
   // The dark text color shown in the screenshot is close to this dark gray
-  const questionColor = "#374151"; 
+  const questionColor = "#374151";
   const answerColor = "#1F2937"; // Darker text for readability
-  
+
   // You MUST provide the correct paths for these images
   const plusIconImageSrc = "/akriti-freq-plus.png"; // Placeholder for PLUS icon
   const minusIconImageSrc = "/akriti-faq-minus.svg"; // Placeholder for MINUS/Close icon
@@ -24,12 +21,12 @@ const headingFontSize = '36px';
   // Assets
   const headingImageSrc = "/akriti-freq-newhead.svg";
   const sideImageSrc = "/men brand-faq-product.png";
-  
+
   // State to track which FAQ item is open
   const [openId, setOpenId] = useState(null);
 
   // --- NEW: Ref to detect clicks outside the FAQ container ---
-  const faqRef = useRef(null); 
+  const faqRef = useRef(null);
   // ---------------------------------------------------------
 
   // --- UPDATED FAQ DATA WITH SCREENSHOT CONTENT ---
@@ -38,31 +35,31 @@ const headingFontSize = '36px';
       id: 1,
       question: "How long should I take Pranoshakti for best results?",
       answer:
-        "Use twice daily — once in the morning and once before bedtime — for best results. Massage in circular upward motions for 3–5 minutes until fully absorbed.",
+        "For long-lasting results, it’s recommended to take Pranoshakti consistently for at least 3 to 6 months. Ayurveda works gradually to strengthen your system from within not just give temporary boosts.",
     },
     {
       id: 2,
       question: "Is Pranoshakti suitable for all age groups?",
       answer:
-        "Most users notice improved skin tone and softness within 3–6 weeks of consistent use. Results may vary depending on individual skin type and routine.",
+        "Pranoshakti is formulated for adult men aged 18 and above who wish to improve stamina, vitality, and energy. It’s not intended for minors or women. For best results, maintain a balanced lifestyle with good diet and exercise.",
     },
     {
       id: 3,
       question: "Is Pranoshakti safe for long-term daily use?",
       answer:
-        "Yes. Aakriti is made with 100% Ayurvedic ingredients and a mild gel base suitable for most skin types. We recommend doing a patch test before first use to ensure compatibility.",
+        "Absolutely. Made from pure Ayurvedic herbs like Ashwagandha, Safed Musli, and Shilajit, Pranoshakti is 100% safe for daily consumption when taken as per the recommended dose. No side effects — only steady, natural growth in stamina and vitality.",
     },
     {
       id: 4,
       question: "Is Pranoshakti only for athletes or gym users?",
       answer:
-        "No. As per product guidelines, Aakriti should be avoided during pregnancy and breastfeeding. Please consult your healthcare provider if you have any concerns.",
+        "Not at all. Pranoshakti is formulated for every man whether you work long hours, travel often, or lead a busy lifestyle. It helps improve daily stamina, focus, and overall energy levels naturally, making it suitable for any adult looking to stay active and confident.",
     },
     {
       id: 5,
       question: "Will I see results immediately after taking Pranoshakti?",
       answer:
-        "Aakriti is suitable for adult women looking for natural, Ayurvedic support for skin tone, firmness, and overall bust-area wellness.",
+        "You may start feeling increased energy and focus within a few weeks, but true transformation happens over time. Regular use for 3–6 months helps balance energy, stamina, and vitality naturally.",
     },
   ];
   // --- END UPDATED FAQ DATA ---
@@ -97,7 +94,7 @@ const headingFontSize = '36px';
       className="relative w-full overflow-hidden flex justify-center py-5"
       style={{ backgroundColor: sectionBgColor }}
     >
-      <div 
+      <div
         className="w-full max-w-[1400px] mx-auto px-6 sm:px-8 flex flex-col lg:flex-row items-center justify-between gap-10"
         ref={faqRef} // --- Attach the ref to the main content container ---
       >
@@ -105,21 +102,19 @@ const headingFontSize = '36px';
         <div className="w-full lg:w-1/2 flex flex-col items-start">
           {/* Heading Image */}
           <div className="mb-8 sm:mb-10">
- <h2
-  // Tailwind classes for responsive font size:
-  // text-xl (example mobile size, 20px)
-  // lg:text-[36px] (example desktop size)
-  className="text-[25px] ml-3 lg:text-[32px] lg:mb-9 lg:ml-14 scale-y-130 transform" 
-  style={{
-    fontFamily: 'Rubik, sans-serif', 
-    fontWeight: 500, 
-    lineHeight: '100%', 
-    color: darkGrayColor, 
-  }}
->
-  Frequently Asked{' '}
-  <span style={{ color: redColor }}>Questions</span>
-</h2>
+            <h2
+              // FIX: Added whitespace-nowrap to keep the text on a single line on mobile
+              className="text-[25px] ml-1 lg:text-[32px] lg:mb-9 lg:ml-14 scale-y-130  lg:transform lg:translate-x-13 whitespace-nowrap"
+              style={{
+                fontFamily: "Rubik, sans-serif",
+                fontWeight: 500,
+                lineHeight: "100%",
+                color: darkGrayColor,
+              }}
+            >
+              Frequently Asked{" "}
+              <span style={{ color: redColor }}>Questions</span>
+            </h2>
           </div>
 
           {/* FAQ Items */}
@@ -127,35 +122,33 @@ const headingFontSize = '36px';
             {faqs.map((faq) => {
               const isOpen = faq.id === openId;
               return (
-                <div
-                  key={faq.id}
-                  className="w-full"
-                >
-                  <div 
-                    className={`flex justify-between items-start pr-2 rounded-lg transition duration-300 shadow-md ${
-                        isOpen ? 'bg-[#E6EAE2] hover:bg-[#E6EAE2]' : 'bg-zinc-100 hover:bg-zinc-200' // Darker color for open state
-                    } cursor-pointer`}
+                <div key={faq.id} className="w-full">
+                  <div
+                    // FIX: Removed conditional background color based on isOpen.
+                    // Now consistently uses bg-zinc-100 (the default closed color).
+                    className={`flex justify-between items-start pr-2 rounded-lg transition duration-300 bg-zinc-100 cursor-pointer`}
                     onClick={() => handleToggle(faq.id)}
                   >
                     {/* Question and Icon Container */}
                     <div className="flex-grow flex items-center px-4 py-5">
-                        <span
-                            className="text-base sm:text-lg font-medium leading-tight"
-                            style={{ color: questionColor }}
-                        >
-                            {faq.question}
-                        </span>
+                      <span
+                        className="text-base sm:text-lg font-medium leading-tight"
+                        style={{ color: questionColor }}
+                      >
+                        {faq.question}
+                      </span>
                     </div>
 
                     {/* Icon (Toggle button container is still the main div) */}
-                    <div className="flex-shrink-0 flex items-center justify-center h-full pt-3 pr-3">
-                        <NextImage
-                            src={isOpen ? minusIconImageSrc : plusIconImageSrc}
-                            alt={isOpen ? "Collapse Answer" : "Expand Answer"}
-                            width={30} // Adjusted size for better visual balance
-                            height={30}
-                            className="transition-transform duration-300"
-                        />
+                    <div className="flex-shrink-0 flex items-center justify-center h-full pt-4 pr-3">
+                      <NextImage
+                        // The icon still changes to show open/closed state visually
+                        src={isOpen ? minusIconImageSrc : plusIconImageSrc}
+                        alt={isOpen ? "Collapse Answer" : "Expand Answer"}
+                        width={40}
+                        height={40}
+                        className="transition-transform duration-300"
+                      />
                     </div>
                   </div>
 
@@ -163,14 +156,16 @@ const headingFontSize = '36px';
                   <div
                     // Conditional classes for height/visibility
                     className={`overflow-hidden transition-all duration-500 ${
-                      isOpen ? 'max-h-96 opacity-100 pt-3' : 'max-h-0 opacity-0 pt-0'
+                      isOpen
+                        ? "max-h-96 opacity-100 pt-3"
+                        : "max-h-0 opacity-0 pt-0"
                     }`}
                   >
-                    <p 
-                        className="text-sm sm:text-base font-normal px-4 pb-4" 
-                        style={{ color: answerColor, whiteSpace: 'pre-wrap' }} 
+                    <p
+                      className="text-sm sm:text-base font-normal px-4 pb-4"
+                      style={{ color: answerColor, whiteSpace: "pre-wrap" }}
                     >
-                        {faq.answer}
+                      {faq.answer}
                     </p>
                   </div>
                 </div>

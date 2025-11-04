@@ -34,7 +34,6 @@ const BenefitsSection = () => {
   ];
 
   // Component to render the Benefit Boxes (Absolute Positioning - USED FOR DESKTOP)
-  // Component to render the Benefit Boxes (Absolute Positioning - USED FOR DESKTOP)
   const renderAbsoluteBoxes = (
     leftOffsetClass,
     rightOffsetClass,
@@ -56,9 +55,9 @@ const BenefitsSection = () => {
               alt="Benefit Icon 1"
               width={24}
               height={24}
+              className="scale-130"
             />
           </div>
-          {/* FIX: Removed .replace() to use the original string without <br /> */}
           <p
             className="text-base"
             style={{ color: benefitTextColor }}
@@ -80,9 +79,9 @@ const BenefitsSection = () => {
               alt="Benefit Icon 2"
               width={24}
               height={24}
+              className="scale-130"
             />
           </div>
-          {/* FIX: Removed .replace() to use the original string without <br /> */}
           <p
             className="text-base"
             style={{ color: benefitTextColor }}
@@ -95,7 +94,6 @@ const BenefitsSection = () => {
           className={`absolute flex items-center ${paddingClass} rounded-xl shadow-md w-full max-w-[450px] ${rightOffsetClass}`}
           style={{ backgroundColor: benefitBoxBg, top: "25%" }}
         >
-          {/* FIX: Removed .replace() to use the original string without <br /> */}
           <p
             className="text-base text-right flex-grow mr-4"
             style={{ color: benefitTextColor }}
@@ -110,6 +108,7 @@ const BenefitsSection = () => {
               alt="Benefit Icon 3"
               width={24}
               height={24}
+              className="scale-130"
             />
           </div>
         </div>
@@ -119,7 +118,6 @@ const BenefitsSection = () => {
           className={`absolute flex items-center ${paddingClass} rounded-xl shadow-md w-full max-w-[450px] ${rightOffsetClass}`}
           style={{ backgroundColor: benefitBoxBg, bottom: "25%" }}
         >
-          {/* FIX: Removed .replace() and the unnecessary 'text-3xl' class */}
           <p
             className="text-base text-right flex-grow mr-4"
             style={{ color: benefitTextColor }}
@@ -132,14 +130,16 @@ const BenefitsSection = () => {
             <Image
               src={benefits[3].src}
               alt="Benefit Icon 4"
-              width={24}
+              width={30}
               height={24}
+              className="scale-130"
             />
           </div>
         </div>
       </div>
     </div>
   );
+  
   // Component to render the Stacked List Boxes (USED FOR TABLET AND MOBILE)
   const renderStackedBoxes = (
     maxWidthClass = "max-w-md",
@@ -160,6 +160,7 @@ const BenefitsSection = () => {
                   alt={`Icon ${index + 1}`}
                   width={20}
                   height={20}
+                  className="scale-130"
                 />
               </div>
             )}
@@ -181,6 +182,7 @@ const BenefitsSection = () => {
                   alt={`Icon ${index + 1}`}
                   width={20}
                   height={20}
+                  className="scale-130"
                 />
               </div>
             )}
@@ -203,7 +205,10 @@ const BenefitsSection = () => {
   );
 
   return (
-    <section className="relative w-full overflow-hidden bg-white min-h-[500px] flex items-center justify-center py-1 px-4">
+    <section 
+      // RESTORED ORIGINAL: py-1 px-4
+      className="relative w-full overflow-hidden bg-white min-h-[500px] flex items-center justify-center py-1 px-4"
+    >
       {/* Background Image (Visible on MD and LG) */}
       <div className="absolute inset-0 z-0 hidden md:block">
         <Image
@@ -212,34 +217,32 @@ const BenefitsSection = () => {
           layout="fill"
           objectFit="cover"
           quality={80}
+          className="scale-115 transform translate-y-10"
         />
         <div className="absolute inset-0 bg-black opacity-30"></div>
       </div>
 
       {/* ================= 1. DESKTOP VIEW (LG only) ================= */}
+      {/* RESTORED ORIGINAL PADDING */}
       <div className="relative z-10 w-full max-w-[1200px] mx-auto hidden lg:flex flex-col items-center">
-        <div className="flex flex-col items-center mb-12 py-8 transform translate-x-5">
+        <div className="flex flex-col items-center mb-12 py-8 transform translate-x-5"> {/* py-8 restored */}
           <h2
             style={{
-              // Shared Styles: Rubik, 36px size, 100% line height, center alignment
               fontFamily: "Rubik, sans-serif",
               fontSize: "36px",
               color: "#FFFFFF",
               lineHeight: "100%",
               letterSpacing: "0%",
               textAlign: "center",
-
-              // Style for "Benefits of" (Light weight)
               fontWeight: 300,
             }}
           >
             Benefits of{"  "}
             <span
               style={{
-                // Style for "Pranoshakti" (Medium weight)
                 fontWeight: 500,
                 color: "#C5151D",
-                fontFamily: "Rubik, sans-serif", // Redundant, but ensures consistency
+                fontFamily: "Rubik, sans-serif",
               }}
             >
               Pranoshakti
@@ -248,7 +251,7 @@ const BenefitsSection = () => {
         </div>
 
         {/* Product Image - Only visible on LG (Desktop) */}
-        <div className="relative z-10 w-[2000px] h-[750px] mb-5 lg:mb-0 justify-center items-center mt-[-250px] transform  -translate-y-1 flex scale-70 rotate-1">
+        <div className="relative z-10 w-[2000px] h-[750px] mb-5 lg:mb-0 justify-center items-center mt-[-250px] transform translate-y-1 -translate-x-3 flex scale-70 rotate-1">
           <Image
             src="/men brand-benefits-main.png"
             alt="Aakriti Product Stacked"
@@ -263,32 +266,27 @@ const BenefitsSection = () => {
       </div>
 
       {/* ================= 2. TABLET VIEW (MD only) - NOW STACKED ================= */}
+      {/* RESTORED ORIGINAL PADDING */}
       <div className="relative z-10 w-full max-w-[1200px] mx-auto hidden md:flex lg:hidden flex-col items-center p-8">
-        {/* Added p-8 padding to this container for better tablet centering */}
-
-        <div className="flex flex-col items-center mb-8 py-1">
+        <div className="flex flex-col items-center mb-8 py-1"> {/* py-1 restored */}
           <h2
             className="mb-6"
             style={{
-              // Shared Styles: Rubik, 36px size, 100% line height, center alignment
               fontFamily: "Rubik, sans-serif",
               fontSize: "35px",
               color: "#FFFFFF",
               lineHeight: "100%",
               letterSpacing: "0%",
               textAlign: "center",
-
-              // Style for "Benefits of" (Light weight)
               fontWeight: 300,
             }}
           >
             Benefits of{"  "}
             <span
               style={{
-                // Style for "Pranoshakti" (Medium weight)
                 fontWeight: 700,
                 color: "#C5151D",
-                fontFamily: "Rubik, sans-serif", // Redundant, but ensures consistency
+                fontFamily: "Rubik, sans-serif",
               }}
             >
               Pranoshakti
@@ -296,59 +294,50 @@ const BenefitsSection = () => {
           </h2>
         </div>
 
-        {/* Product Image Displayed in Tablet View (If desired - currently excluded) */}
-        {/* You could add the image here if needed, but for the list layout, 
-           it's often placed above or below the list. */}
-
         {/* Benefit Boxes - Tablet Stacked Layout */}
         {renderStackedBoxes("max-w-2xl", "text-base")}
       </div>
 
       {/* ================= 3. MOBILE VIEW (Default/SM only) ================= */}
-      <div className="w-full flex justify-center py-0 relative z-10 block md:hidden">
+      {/* Container holding the mobile card is now the target for reduced top/bottom space */}
+      <div className="w-full flex justify-center **py-0** relative z-10 block md:hidden">
         {/* Mobile Card Container: SOLID Dark Green Background, Rounded Corners */}
         <div
-          className="relative w-full mx-2 max-w-[380px] h-auto p-4 rounded-2xl overflow-hidden flex flex-col items-center"
+          className="relative w-full mx-2 max-w-[380px] h-auto p-4 rounded-xl overflow-hidden flex flex-col items-center"
           style={{
-      backgroundColor: mobileCardBgColor, // Keep the solid background color as a base/fallback
-    }}
+            backgroundColor: mobileCardBgColor,
+          }}
         >
           <div className="absolute inset-0 z-0">
-      <Image
-        src={bgImageSrc} // Use the image source from your constants
-        alt="Mobile Benefit Background"
-        layout="fill"
-        objectFit="cover"
-        priority // Optional, if you want it to load quickly
-      />
-      {/* Optional: Add a subtle overlay if needed, similar to the main section */}
-      {/* <div className="absolute inset-0 bg-black opacity-10"></div> */}
-    </div>
+            <Image
+              src={bgImageSrc}
+              alt="Mobile Benefit Background"
+              layout="fill"
+              objectFit="cover"
+              priority
+            />
+          </div>
           {/* Content (Relative Z-Index ensures content is on top of the solid background) */}
-          <div className="relative z-10 w-full my-5 flex flex-col items-center ">
+          <div className="relative z-10 w-full **my-2** flex flex-col items-center "> {/* Reduced vertical margin from my-5 to my-2 */}
             {/* 1. Mobile Heading */}
             <h2
               className="mb-6"
               style={{
-                // Shared Styles: Rubik, 36px size, 100% line height, center alignment
                 fontFamily: "Rubik, sans-serif",
                 fontSize: "26px",
                 color: "#FFFFFF",
                 lineHeight: "100%",
                 letterSpacing: "0%",
                 textAlign: "center",
-
-                // Style for "Benefits of" (Light weight)
                 fontWeight: 300,
               }}
             >
               Benefits of{"  "}
               <span
                 style={{
-                  // Style for "Pranoshakti" (Medium weight)
                   fontWeight: 700,
                   color: "#C5151D",
-                  fontFamily: "Rubik, sans-serif", // Redundant, but ensures consistency
+                  fontFamily: "Rubik, sans-serif",
                 }}
               >
                 Pranoshakti

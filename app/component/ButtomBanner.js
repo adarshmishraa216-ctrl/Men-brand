@@ -3,7 +3,7 @@ import React from "react";
 import NextImage from "next/image";
 
 const HeroBanner = () => {
-  const bgImageSrc = "/men brand-buttom-banner.png";
+  const bgImageSrc = "/men brand-buttom-newimg.png";
   const buttonColor = "#007850";
   const topHeadingFont = "'Limelight', sans-serif";
 
@@ -17,47 +17,55 @@ const HeroBanner = () => {
         src={bgImageSrc}
         alt="Aakriti Banner Background"
         fill
-        className="object-cover"
+        className=" object-cover object-[20%_70%] lg:scale-x-[-1]"
         sizes="50vw"
         priority
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/30"></div>
+      {/* Overlay - FIX: Changed to a vertical linear gradient (top to bottom) */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          // Linear gradient from top (dark) to bottom (transparent)
+          // Starts dark (80% opacity) at the top, fades to semi-transparent (10%) by 70% down, and is transparent at the bottom.
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.1) 70%, transparent 100%)'
+        }}
+      ></div>
 
       {/* Text Content */}
-      <div className="absolute inset-0 max-w-[1200px] mx-auto flex items-center py-5 px-6 sm:px-10">
-        <div className="flex flex-col items-start text-white w-full sm:w-auto">
-          {/* Main Heading - FIX APPLIED HERE */}
+      <div  className="absolute inset-0 max-w-[1200px] mx-auto flex items-center py-5 px-6 sm:px-10">
+        <div 
+          className="flex flex-col items-center sm:items-start text-center sm:text-left text-white w-full"
+        >
+          {/* Main Heading */}
           <h1
-            // MODIFIED: Restored standard responsive classes for mobile sizing (text-xl to md:text-3xl)
-            // Scoped the fixed 36px size to the lg breakpoint using arbitrary values: lg:text-[36px]
-            className="text-xl sm:text-2xl lg:text-[36px] font-bold tracking-wide mb-2 pt-5 leading-tight"
+            className="text-center sm:text-left text-xl sm:text-2xl lg:text-[36px] font-bold tracking-wide mb-2 pt-5 leading-tight"
             style={{
               fontFamily: "Rubik, sans-serif",
-              fontWeight: 400, // Regular weight as per Figma (400)
+              fontWeight: 400,
               lineHeight: "100%",
               letterSpacing: "0%",
             }}
           >
-            Nature’s Secret for Lasting Vitality.
+            Nature’s Secret for Lasting <br className="sm:hidden" />
+            Vitality.
           </h1>
 
-          {/* Sub Heading with Meow Script font */}
+          {/* Sub Heading with Limelight font */}
           <p
             style={{
               fontFamily: "'Limelight', cursive",
               color: "#C5151D",
               lineHeight: "100%",
             }}
-            className="font-light mb-4 text-3xl sm:text-5xl md:text-6xl lg:text-6xl"
+            className="font-light mb-4 text-3xl sm:text-5xl md:text-6xl lg:text-6xl text-center sm:text-left"
           >
             Rebuilds you for life.
           </p>
 
           {/* Button */}
           <button
-            className="text-white mb-9 font-medium shadow-lg transition-transform duration-200 hover:scale-[1.03] w-full sm:w-auto text-base sm:text-lg"
+            className="text-white mb-9 font-medium shadow-lg transition-transform duration-200 hover:scale-[1.03] w-full sm:w-auto text-base sm:text-lg mx-auto sm:mx-0"
             style={{
               backgroundColor: buttonColor,
               padding: "12px 20px",

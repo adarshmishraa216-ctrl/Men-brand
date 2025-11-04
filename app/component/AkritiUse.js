@@ -4,31 +4,25 @@ import Image from "next/image";
 
 const HowToUseSection = () => {
   const sectionBgColor = "#FFFFFF";
-  const instructionTextColor = "#4B5563";
+  const instructionTextColor = "#2A4E42"; // Used for step title/description
   const listTextColor = "#6B7280";
+  const DESKTOP_BG_LAYER_COLOR = "#F0F0F0"; // The requested solid background color
+
+  // Keeping the color definition for the static numbers (red/bold style)
+  const NUMBER_COLOR = "#C5151D"; 
   
-
-  // 🌟 NEW CONTROL VARIABLES 🌟
-  // Adjust these two variables to change the size of ALL number icons.
-  const DESKTOP_NUMBER_SIZE = 40; // Default size (e.g., 40x40 pixels)
-  const MOBILE_NUMBER_SIZE = 25; // Default size (e.g., 25x25 pixels)
-  // You can set height separately if needed: const MOBILE_NUMBER_HEIGHT = 35;
-
   const steps = [
     {
-      numberImg: "/men brand-use-1.svg",
       title: "Take 1–2 Capsules",
       description:
         "Consume one to two capsules daily with lukewarm milk or water for better absorption.",
     },
     {
-      numberImg: "/men brand-use-2.svg",
       title: "Maintain Consistency",
       description:
         "For best results, take it regularly at the same time each day — morning and evening.",
     },
     {
-      numberImg: "/men brand-use-3.svg",
       title: "Follow the healthy Routine",
       description:
         "Combine with a balanced diet, good sleep, and regular exercise to maximize stamina and vitality naturally.",
@@ -46,15 +40,12 @@ const HowToUseSection = () => {
       style={{ backgroundColor: sectionBgColor }}
     >
       {/* ===== Decorative Grey Wave Background (Desktop only) ===== */}
-      <div className="hidden lg:block absolute inset-0 z-0">
-        <svg
-          viewBox="0 0 1440 320"
-          preserveAspectRatio="none"
-          className="absolute top-0 w-full h-full"
-          style={{ fill: "#F6F6F6" }}
-        >
-          <path d="M0,64L80,85.3C160,107,320,149,480,181.3C640,213,800,235,960,229.3C1120,224,1280,192,1360,176L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
-        </svg>
+      {/* FIX: Replaced the SVG container with a solid color div. */}
+      <div 
+        className="hidden lg:block absolute inset-0 z-0"
+        style={{ backgroundColor: DESKTOP_BG_LAYER_COLOR }} 
+      >
+        {/* Empty content, just a solid background layer */}
       </div>
 
       {/* ===== Desktop Version ===== */}
@@ -80,26 +71,29 @@ const HowToUseSection = () => {
               style={{
                 // CSS styles for font family and weight
                 fontFamily: "Rubik, sans-serif",
-                fontWeight: 400, // Corresponds to Light font weight
+                fontWeight: 400,
+                // Corresponds to Light font weight
                 letterSpacing: "0%",
               }}
             >
-              how to use
+              How to use
             </h2>
           </div>
 
           <div className="flex flex-col space-y-8">
             {steps.map((step, index) => (
               <div key={index} className="flex items-start space-x-4">
-                {/* Desktop Number Image - Uses DESKTOP_NUMBER_SIZE */}
-                <Image
-                  src={step.numberImg}
-                  alt={`Step ${index + 1}`}
-                  width={DESKTOP_NUMBER_SIZE}
-                  height={DESKTOP_NUMBER_SIZE} // Using same size for height/width
-                  className="flex-shrink-0 mt-1"
-                />
+                
+                {/* 🎯 Desktop Static Number (Restored original title styling) */}
+                <span
+                  className="flex-shrink-0 mt-1 font-medium text-[100px] leading-none tranform -translate-y-4"
+                  style={{ color: NUMBER_COLOR }}
+                >
+                  {index + 1}
+                </span>
+
                 <div className="flex flex-col">
+                  {/* RESTORED ORIGINAL DESKTOP H3 STYLING */}
                   <h3
                     className="text-lg font-medium"
                     style={{ color: instructionTextColor }}
@@ -119,7 +113,7 @@ const HowToUseSection = () => {
 
           <div className="mt-12">
             <h4
-              className="text-base font-medium"
+              className="text-base font-light"
               style={{ color: instructionTextColor }}
             >
               For best results:
@@ -152,7 +146,7 @@ const HowToUseSection = () => {
               letterSpacing: "0%",
             }}
           >
-            how to use
+            How to use
           </h2>
         </div>
 
@@ -164,16 +158,16 @@ const HowToUseSection = () => {
             {steps.slice(0, 2).map((step, index) => (
               <div key={index} className="flex flex-col items-start space-y-2">
                 <div className="flex items-center space-x-2">
-                  {/* Mobile Number Image (Step 1 & 2) - Uses MOBILE_NUMBER_SIZE */}
-                  <Image
-                    src={step.numberImg}
-                    alt={`Step ${index + 1}`}
-                    width={MOBILE_NUMBER_SIZE}
-                    height={MOBILE_NUMBER_SIZE}
-                    className="flex-shrink-0"
-                  />
+                  {/* 🎯 Mobile Static Number (Step 1 & 2) */}
+                  <span
+                    className="flex-shrink-0 font-extrabold text-[45px] leading-none"
+                    style={{ color: NUMBER_COLOR }}
+                  >
+                    {index + 1}
+                  </span>
+                  {/* RESTORED ORIGINAL MOBILE H3 STYLING */}
                   <h3
-                    className="text-[13px] font-semibold leading-tight"
+                    className="text-[16px]  leading-tight"
                     style={{ color: instructionTextColor }}
                   >
                     {step.title}
@@ -190,18 +184,18 @@ const HowToUseSection = () => {
           </div>
 
           <div className="flex flex-row items-center justify-between">
-            <div className="flex flex-col items-start space-y-2 w-[70%]">
+            <div className="flex flex-col items-start space-y-2 w-[100%]">
               <div className="flex items-center space-x-2">
-                {/* Mobile Number Image (Step 3) - Uses MOBILE_NUMBER_SIZE */}
-                <Image
-                  src={steps[2].numberImg}
-                  alt="Step 3"
-                  width={MOBILE_NUMBER_SIZE}
-                  height={MOBILE_NUMBER_SIZE}
-                  className="flex-shrink-0 scale-120"
-                />
+                {/* 🎯 Mobile Static Number (Step 3) */}
+                <span
+                  className="flex-shrink-0 font-extrabold text-[35px] leading-none scale-150"
+                  style={{ color: NUMBER_COLOR }}
+                >
+                  {steps.length} {/* Displaying 3 */}
+                </span>
+                {/* RESTORED ORIGINAL MOBILE H3 STYLING */}
                 <h3
-                  className="text-[13px] font-semibold leading-tight"
+                  className="text-[16px] leading-tight"
                   style={{ color: instructionTextColor }}
                 >
                   {steps[2].title}
@@ -215,12 +209,12 @@ const HowToUseSection = () => {
               </p>
             </div>
 
-            <div className="relative w-[160px] h-[150px] flex-shrink-0 self-center mb-0  ">
+            <div className="relative w-[120px] h-[150px] flex-shrink-0 self-center mb-0  ">
               <Image
                 src="/men brand-use-model.png"
                 alt="Model"
                 fill
-                className="object-contain scale-140 scale-x-[-1.5]  transform -translate-y-2 md:scale-130 md:transform md:-translate-x-10 "
+                className="object-contain scale-150 scale-x-[-1.5]  transform translate-y-1 md:scale-130 md:transform md:-translate-x-10 "
               />
             </div>
           </div>
@@ -228,8 +222,8 @@ const HowToUseSection = () => {
 
         <div className="mt-5 text-left w-full">
           <h4
-            className="text-sm font-semibold mb-1"
-            style={{ color: instructionTextColor }}
+            className="text-[12px] font-light  mb-1"
+            
           >
             For best results:
           </h4>
@@ -237,7 +231,7 @@ const HowToUseSection = () => {
             {bestResultsList.map((item, index) => (
               <li
                 key={index}
-                className="text-[13px] leading-tight"
+                className="text-[10px] leading-tight"
                 style={{ color: listTextColor }}
               >
                 {item}

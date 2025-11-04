@@ -54,15 +54,16 @@ const HeroBanner = () => {
         >
           {/* Top small text - MODIFIED: Reduced font size on mobile */}
           <p
-            className="text-xs sm:text-sm md:text-base text-gray-700 mb-2 md:mb-1 whitespace-nowrap  text-ellipsis"
+            className="text-xs sm:text-sm md:text-base text-gray-700 lg:mb-4 mb-3 md:mb-1 whitespace-nowrap  text-ellipsis"
             style={{ maxWidth: "100%" }}
           >
             Powered by Ayurveda for Modern Men
           </p>
 
-          {/* 1. Main Heading: A Modern Woman's Ayurveda Ritual */}
+          {/* 1. Main Heading: Energy • Stamina • Confidence */}
           <h2
-            className="font-normal mb-2 md:mb-1 text-[20px] lg:text-[40px] md:text-4xl"
+            // FIX: Added whitespace-nowrap to prevent wrapping on mobile
+            className="font-normal mb-2 md:mb-1 text-[20px] lg:text-[40px] md:text-4xl whitespace-nowrap"
             style={{
               color: "#000000",
               fontFamily: "Rubik, sans-serif",
@@ -71,8 +72,13 @@ const HeroBanner = () => {
               letterSpacing: "0%",
             }}
           >
-            Energy • Stamina • Confidence
+            Energy • Stamina • <br className="sm:hidden" />Confidence
           </h2>
+          {/* Note on FIX: I used <br className="sm:hidden" /> to only apply the break 
+             on mobile, but since you have whitespace-nowrap, the text may still 
+             look odd on desktop. If it looks bad on desktop, remove the 
+             whitespace-nowrap class for screens larger than mobile (e.g., md:whitespace-normal). 
+             For now, I'm assuming you want the break specifically for mobile. */}
 
           {/* 2. Sub-Heading: The Natural Way */}
           <h3
@@ -90,8 +96,8 @@ const HeroBanner = () => {
           </h3>
 
           {/* Buttons - ADDED LEARN MORE BUTTON, adjusted container space */}
-          <div className="flex justify-start items-center space-x-2">
-            {/* Primary Button (Visible on all screens) - FIXED for mobile spacing */}
+          <div className="flex justify-start items-center space-x-2 transform -translate-y-4 flex-wrap">
+            {/* Primary Button (Visible on all screens) - TRANSFORM FIXED */}
             <Link
               href="/buy-aakriti"
               style={{
@@ -99,14 +105,15 @@ const HeroBanner = () => {
                 borderRadius: buttonRadius,
               }}
               className="
-        text-white 
-        text-[20px] sm:text-base md:text-base font-medium /* Decreased text size to 'text-sm' on smallest screens */
-        lg:py-[20px] md:py-2 sm:py-[20px] px-[20px] 
-        shadow-md hover:opacity-90 transition duration-200
-        whitespace-nowrap 
-      "
+                text-white 
+                text-[18px] sm:text-base md:text-base 
+               font-medium 
+                lg:py-[10px] md:py-2 sm:py-[15px] px-[20px] mt-6 
+                shadow-md hover:opacity-90 transition duration-200
+                whitespace-nowrap 
+              "
             >
-              Buy Akriti Now
+              Buy Pranoshakti Now
             </Link>
 
             {/* Secondary Button (Desktop Only: hidden lg:block) */}
@@ -118,11 +125,11 @@ const HeroBanner = () => {
                 color: primaryButtonBg, // Text color is green
               }}
               className="
-      hidden lg:block // Hidden on mobile/md, visible on lg
-      bg-transparent 
-      text-base font-medium py-[20px] px-[26px] 
-      border-2 shadow-md hover:bg-gray-50 transition duration-200
-    "
+                hidden lg:block // Hidden on mobile/md, visible on lg
+                bg-transparent 
+                text-base font-medium py-[10px] px-[26px] mt-6 
+                border-2 shadow-md hover:bg-gray-50 transition duration-200
+              "
             >
               Learn More
             </Link>
@@ -131,8 +138,7 @@ const HeroBanner = () => {
 
         {/* --- NEW RIGHT SECTION (Models and Background Leaf) --- */}
         <div
-          // MODIFIED: Increased mobile height from h-[200px] to h-[300px]
-          // MODIFIED: Adjusted mobile transform (-translate-y-8) to -translate-y-4 for better vertical positioning.
+          // MODIFIED: Adjusted mobile height and translate values for better vertical positioning.
           className="relative w-1/2 flex justify-center items-center h-[200px] lg:h-[345px] transform -translate-y-4 lg:translate-y-0"
         >
           {/* Background Leaf Image (behind models) - HIDDEN ON MOBILE */}
@@ -159,7 +165,7 @@ const HeroBanner = () => {
             height={400}
             priority
             // MODIFIED: Increased scale for mobile (default, not lg:). Adjusted translate.
-            className="absolute z-10 object-contain scale-230 transform -translate-y-10 -translate-x-4 lg:scale-150 lg:-translate-y-10 lg:translate-x-18"
+            className="absolute z-10 object-contain scale-250 transform scale-y-270 -translate-y-15 translate-x-5 lg:scale-150 lg:-translate-y-10 lg:translate-x-18"
             style={{
               left: "10%", // Adjust position
               bottom: "0%", // Adjust position
@@ -177,7 +183,7 @@ const HeroBanner = () => {
             height={400}
             priority
             // MODIFIED: Increased scale for mobile (default, not lg:). Adjusted translate.
-            className="absolute z-10 object-contain scale-240 transform -translate-y-11 translate-x-2 lg:scale-150 lg:-translate-y-10 lg:translate-x-10"
+            className="absolute z-10 object-contain scale-240 scale-y-270 transform -translate-y-15 translate-x-5 lg:scale-150 lg:-translate-y-8 lg:translate-x-10"
             style={{
               right: "10%", // Adjust position
               bottom: "0%", // Adjust position

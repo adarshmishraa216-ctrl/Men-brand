@@ -2,10 +2,18 @@
 
 @font-face {
   font-family: 'Limelight';
-  src: url('/Limelight/Limelight-Regular.ttf') format('truetype');
+  src: url('/font/Limelight/Limelight-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
-  font-display: swap; /* Best practice for performance */
+  font-display: swap; 
+}
+
+@font-face {
+  font-family: 'Rubik Custom'; /* Define a new name */
+  src: url('/public/font2/rubik/Rubik-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 html,
 body {
