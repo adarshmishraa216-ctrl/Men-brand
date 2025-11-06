@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import PranoshaktiMobileBuyButton from "./component/PranoshaktiMobileBuyButton";
+ // ✅ import your button
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pranoshakti by Charvak Ayurveda",
-  description: "Energy • Stamina • Confidence • Naturally",
+  title: "Aakriti by Charvak Ayurveda",
+  description: "Feel Beautiful. Stay Confident. Live Natural.",
 };
 
 export default function RootLayout({
@@ -28,12 +28,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white min-h-screen`}
         style={{
-          overflowX: "hidden",
-          overflowY: "auto",
+          overflowX: "hidden", // ✅ only prevent sideways scroll
+          overflowY: "auto", // ✅ allow normal vertical scroll
         }}
       >
-        <main className="pb-20 md:pb-0">{children}</main>
-        <PranoshaktiMobileBuyButton />
+        <main className="">{children}</main> {/* ✅ padding only on mobile for buy button */}
+         {/* ✅ fixed button */}
       </body>
     </html>
   );
