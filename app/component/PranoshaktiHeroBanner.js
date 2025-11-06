@@ -165,7 +165,7 @@ const HeroBanner = () => {
             height={400}
             priority
             // MODIFIED: Increased scale for mobile (default, not lg:). Adjusted translate.
-            className="absolute z-10 object-contain scale-250 transform scale-y-270 -translate-y-15 translate-x-5 lg:scale-150 lg:-translate-y-10 lg:translate-x-18"
+            className="absolute z-10 object-contain scale-250 transform scale-y-270 -translate-y-9 translate-x-5 lg:scale-150 lg:-translate-y-10 lg:translate-x-18"
             style={{
               left: "10%", // Adjust position
               bottom: "0%", // Adjust position
@@ -183,7 +183,7 @@ const HeroBanner = () => {
             height={400}
             priority
             // MODIFIED: Increased scale for mobile (default, not lg:). Adjusted translate.
-            className="absolute z-10 object-contain scale-240 scale-y-270 transform -translate-y-15 translate-x-5 lg:scale-150 lg:-translate-y-8 lg:translate-x-10"
+            className="absolute z-10 object-contain scale-240 scale-y-270 transform -translate-y-9 translate-x-5 lg:scale-150 lg:-translate-y-8 lg:translate-x-10"
             style={{
               right: "10%", // Adjust position
               bottom: "0%", // Adjust position
