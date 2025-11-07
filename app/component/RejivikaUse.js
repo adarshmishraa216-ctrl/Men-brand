@@ -65,7 +65,8 @@ const HowToUseSection = () => {
     return (
       <div
         className={`flex ${containerClasses} mb-6`} 
-        style={{ maxWidth: isMobile ? "none" : DESKTOP_TEXT_WIDTH }}
+        // FIXED: Increased max-width for tablet view
+        style={{ maxWidth: isMobile ? "90%" : DESKTOP_TEXT_WIDTH }} 
       >
         
         {/* Left Column: Image ONLY (Desktop) / Image + Product Type (Mobile) */}
@@ -81,7 +82,7 @@ const HowToUseSection = () => {
                     height={imageSize}
                     // FIXED: Corrected invalid class 'lg:tranform' to 'lg:transform'
                     // The scale-120 is preserved to increase the image size.
-                    className="rounded-full object-cover scale-120 lg:scale-180 lg:transform lg:-translate-x-4 lg:translate-y-3"
+                    className="rounded-full object-cover scale-120 lg:scale-180 lg:transform lg:-translate-x-4 lg:translate-y-4"
                 />
             </div>
             {/* REMOVED REDUNDANT MOBILE PRODUCT TYPE TEXT */}
@@ -90,8 +91,8 @@ const HowToUseSection = () => {
         {/* Right Column: Title (Single Line) and Instructions */}
         <div
           className="flex flex-col items-start"
-          // In mobile, allocate remaining space up to 70% of the container width
-          style={{ maxWidth: isMobile ? "70%" : "calc(100% - 70px)" }}
+          // FIXED: Increased max-width allocation for instructions on tablet
+          style={{ maxWidth: isMobile ? "75%" : "calc(100% - 70px)" }} 
         >
           
           <h3
@@ -182,7 +183,6 @@ const HowToUseSection = () => {
 
           {/* Instruction Blocks Container */}
           <div className="flex flex-col space-y-3 flex-grow"> 
-             {/* FIXED: Removed the invalid lg:tranform lg:translate-y-4 from here to fix text alignment */}
             <InstructionBlock
               title="Rejivika Capsules"
               src={capsuleBottleSrc}
@@ -220,11 +220,10 @@ const HowToUseSection = () => {
         </div>
       </div>
 
-      {/* ===== Mobile Version (block lg:hidden) - HEADING OUTSIDE GREY BOX ===== */}
+      {/* ===== Mobile Version (block lg:hidden) - TABLET RESPONSIVENESS ADDED ===== */}
       <div 
-        // Outer wrapper for the mobile content. 
-        // Removed bg-white as the background is now set on the <section>
-        className="block lg:hidden w-full relative z-10 px-4 py-8" 
+        // FIXED: Added md:max-w-3xl (approx 600px) and md:px-6 for better tablet width and padding
+        className="block lg:hidden w-full relative z-10 px-4 py-8 md:max-w-3xl md:px-6 mx-auto" 
       >
         
         {/* 1. Main Heading (How to use) - OUTSIDE GREY BOX */}
@@ -250,14 +249,15 @@ const HowToUseSection = () => {
 
         {/* Main Grey Card Container - ONLY INSTRUCTIONS AND PRO TIPS */}
         <div
-          // Removed rounded-xl to manage rounding manually. Removed borderTop.
-          // Added rounded-b-xl for bottom only rounding. Added p-6 back for internal padding.
+          // FIXED: Removed inline style maxWidth: "400px" as it is now controlled by the parent md:max-w-3xl
           className="w-full bg-[#F0F0F0] mx-auto rounded-b-xl p-6" 
-          style={{ maxWidth: "400px" }}
         >
 
           {/* 2. Instruction Blocks (Capsule & Gel) - USING InstructionBlock */}
-          <div className="w-full space-y-6">
+          <div 
+             // FIXED: Changed instruction blocks to flex-row and flex-wrap on tablets to potentially place them side-by-side if desired, or at least maximize horizontal space.
+            className="w-full space-y-6 md:flex md:flex-row md:flex-wrap md:justify-center md:gap-x-8"
+          >
             
             {/* InstructionBlock for Capsules */}
             <InstructionBlock
@@ -280,7 +280,10 @@ const HowToUseSection = () => {
           {/* 3. Side-by-Side Container for Image and Pro Tips */}
           <div className="flex flex-row items-end justify-between w-full mt-4 pt-4">
             {/* Left Column: Pro Tips / Best Results List */}
-            <div className="w-1/2 text-left pr-2 mb-4">
+            <div 
+                // FIXED: Set width to 5/12 on tablet for better visual balance with the image
+                className="w-1/2 md:w-5/12 text-left pr-2 mb-4"
+            >
               <h4
                 // Preserved existing classes
                 className="text-semi font-light mb-2"
@@ -302,7 +305,10 @@ const HowToUseSection = () => {
             </div>
 
             {/* Right Column: Product Model Image */}
-            <div className="relative w-1/2 h-[200px] flex justify-center items-end flex-shrink-0">
+            <div 
+                // FIXED: Set width to 7/12 on tablet
+                className="relative w-1/2 md:w-7/12 h-[200px] flex justify-center items-end flex-shrink-0"
+            >
               <Image
                 src="/rejivika-use-model.png"
                 alt="Models with products"

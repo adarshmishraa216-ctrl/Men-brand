@@ -71,7 +71,7 @@ const HeroBanner = () => {
 
           {/* 1. Main Heading: Rebalance. Rejuvenate. Rediscover */}
           <h2
-            className="font-normal mb-2 md:mb-1 text-[20px] lg:text-[36px] md:text-4xl"
+            className="font-normal mb-2 md:mb-1 text-[20px] lg:text-[36px] md:text-2xl"
             style={{
               color: "#000000",
               fontFamily: "Rubik, sans-serif",
@@ -166,7 +166,7 @@ const HeroBanner = () => {
               w-[160px] h-[180px] sm:w-[200px] sm:h-[220px] md:w-[220px] md:h-[250px] lg:w-[260px] lg:h-[300px] xl:w-[400px] xl:h-[350px]
               
               transform scale-[1.3] translate-x-30 -translate-y-45
-              md:translate-x-0 md:translate-y-0 md:scale-100 
+              md:translate-x-20 md:translate-y-8 md:scale-110 
               lg:transform lg:translate-x-12 lg:-translate-y-8 lg:scale-[1.2]
             "
           />
@@ -183,7 +183,7 @@ const HeroBanner = () => {
               w-[160px] h-[180px] sm:w-[200px] sm:h-[220px] md:w-[220px] md:h-[250px] lg:w-[260px] lg:h-[300px] xl:w-[400px] xl:h-[350px]
               
               transform scale-[1.3] translate-x-15 -translate-y-45
-              md:translate-x-0 md:translate-y-0 md:scale-100
+              md:translate-x-0 md:translate-y-8 md:scale-110
               lg:transform lg:-translate-x-28 lg:-translate-y-6 lg:scale-[1.2]
             "
           />
