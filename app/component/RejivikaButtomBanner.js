@@ -3,9 +3,9 @@ import React from "react";
 import NextImage from "next/image";
 
 const HeroBanner = () => {
-  const bgImageSrc = "/rejivika-buttombannerimg.png ";
+  
   const buttonColor = "#007850";
-  const topHeadingFont = "'Roboto', sans-serif";
+  
 
   return (
     <section
@@ -14,7 +14,7 @@ const HeroBanner = () => {
     >
       {/* Background Image */}
       <NextImage
-        src={bgImageSrc}
+        src="/rejivika-buttombannerimg.png"
         alt="Aakriti Banner Background"
         fill
         className="object-cover"
