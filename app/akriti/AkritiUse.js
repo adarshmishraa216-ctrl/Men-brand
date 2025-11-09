@@ -7,27 +7,24 @@ const HowToUseSection = () => {
   const instructionTextColor = "#4B5563";
   const listTextColor = "#6B7280";
 
-  // 🌟 NEW CONTROL VARIABLES 🌟
-  // Adjust these two variables to change the size of ALL number icons.
-  const DESKTOP_NUMBER_SIZE = 40; // Default size (e.g., 40x40 pixels)
-  const MOBILE_NUMBER_SIZE = 25;  // Default size (e.g., 25x25 pixels) 
-  // You can set height separately if needed: const MOBILE_NUMBER_HEIGHT = 35;
-
   const steps = [
     {
-      numberImg: "/akriti-use-1.png",
+      id: 1,
+      color: "#DF67A3",
       title: "Take a Small Amount",
       description:
         "Scoop a small quantity of Aakriti gel on your fingertips. Use enough to cover the target area comfortably.",
     },
     {
-      numberImg: "/akriti-use-2.png",
+      id: 2,
+      color: "#DF67A3",
       title: "Apply Gently",
       description:
         "Massage in circular upward motions for 3–5 minutes to ensure even absorption.",
     },
     {
-      numberImg: "/akriti-use3.png",
+      id: 3,
+      color: "#DF67A3",
       title: "Let It Absorb",
       description:
         "Allow the gel to fully absorb into the skin. Use twice daily morning and night for best results.",
@@ -42,10 +39,10 @@ const HowToUseSection = () => {
 
   return (
     <section
-      className="relative w-full overflow-hidden flex flex-col items-center"
+      className="relative w-full overflow-hidden flex flex-col items-center py-10"
       style={{ backgroundColor: sectionBgColor }}
     >
-      {/* ===== Decorative Grey Wave Background (Desktop only) ===== */}
+      {/* ===== Decorative Grey Background (Desktop only) ===== */}
       <div className="hidden lg:block absolute inset-0 z-0">
         <svg
           viewBox="0 0 1440 320"
@@ -60,37 +57,53 @@ const HowToUseSection = () => {
       {/* ===== Desktop Version ===== */}
       <div className="hidden lg:flex w-full flex-row items-start justify-between gap-12 px-8 py-20 max-w-[1400px] mx-auto relative z-10">
         {/* Left Image */}
-        <div className="relative w-full lg:w-1/2 h-[700px] flex-shrink-0 flex justify-center items-end">
+        <div className="relative w-full lg:w-1/2 h-auto flex-shrink-0 flex justify-center items-end">
           <Image
             src="/akriti-use-model.png"
             alt="Woman holding product jar"
-            fill
-            className="object-cover lg:object-contain object-right-bottom transform scale-x-[-1] scale-130 "
-            sizes="(max-width: 1024px) 100vw, 50vw"
+            width={600} // or 550 depending on desired width
+            height={700} // keep a natural aspect ratio
+            className="object-contain transform scale-x-[-1] scale-150 transform translate-y-20"
             priority
           />
         </div>
 
         {/* Right Content */}
         <div className="w-full lg:w-1/2 flex flex-col items-start p-8 lg:p-16">
+          {/* Heading with Wave Underline */}
           <div className="mb-12">
-            <img src="akriti-use-newhead.svg" alt="How to use heading" />
+            <h2 className="text-3xl font-semibold text-gray-900 mb-3">
+              How to use
+            </h2>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="120"
+              height="10"
+              viewBox="0 0 120 10"
+              fill="none"
+            >
+              <path
+                d="M2 6C25 1 40 9 65 5C90 1 105 9 118 5"
+                stroke="#EC4899"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
+            </svg>
           </div>
 
-          <div className="flex flex-col space-y-8">
-            {steps.map((step, index) => (
-              <div key={index} className="flex items-start space-x-4">
-                {/* Desktop Number Image - Uses DESKTOP_NUMBER_SIZE */}
-                <Image
-                  src={step.numberImg}
-                  alt={`Step ${index + 1}`}
-                  width={DESKTOP_NUMBER_SIZE}
-                  height={DESKTOP_NUMBER_SIZE} // Using same size for height/width
-                  className="flex-shrink-0 mt-1"
-                />
+          {/* Steps */}
+          <div className="flex flex-col space-y-10">
+            {steps.map((step) => (
+              <div key={step.id} className="flex items-start space-x-6">
+                <span
+                  className="text-6xl font-bold leading-none scale-y-125"
+                  style={{ color: step.color }}
+                >
+                  {step.id}
+                </span>
                 <div className="flex flex-col">
                   <h3
-                    className="text-lg font-medium"
+                    className="text-lg font-semibold"
                     style={{ color: instructionTextColor }}
                   >
                     {step.title}
@@ -106,14 +119,12 @@ const HowToUseSection = () => {
             ))}
           </div>
 
+          {/* For Best Results */}
           <div className="mt-12">
-            <h4
-              className="text-base font-medium"
-              style={{ color: instructionTextColor }}
-            >
+            <h4 className="text-base font-medium text-gray-800 mb-2">
               For best results:
             </h4>
-            <ul className="list-disc ml-6 mt-2 space-y-1">
+            <ul className="list-disc ml-6 space-y-1">
               {bestResultsList.map((item, index) => (
                 <li
                   key={index}
@@ -129,31 +140,46 @@ const HowToUseSection = () => {
       </div>
 
       {/* ===== Mobile Version ===== */}
-      <div className="block lg:hidden w-full flex flex-col items-center px-6 py-4 relative z-10">
-        <div className="flex flex-col items-center mb-2">
-          <img
-            src="akriti-use-head.png"
-            alt="How to use heading"
-            className="w-[220px]"
-          />
+      <div className="block lg:hidden w-full flex flex-col items-center px-6 py-6 relative z-10">
+        <div className="flex flex-col items-center mb-4">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+            How to use
+          </h2>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100"
+            height="8"
+            viewBox="0 0 100 8"
+            fill="none"
+          >
+            <path
+              d="M2 5C20 1 40 7 65 4C90 1 98 6 98 4"
+              stroke="#EC4899"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+          </svg>
         </div>
 
+        {/* Mobile Background Box */}
         <div
           className="w-full rounded-2xl p-5 shadow-sm flex flex-col"
           style={{ backgroundColor: "#F3F4F6" }}
         >
+          {/* Steps 1 & 2 in Grid */}
           <div className="grid grid-cols-2 gap-4 mb-4">
-            {steps.slice(0, 2).map((step, index) => (
-              <div key={index} className="flex flex-col items-start space-y-2">
+            {steps.slice(0, 2).map((step) => (
+              <div
+                key={step.id}
+                className="flex flex-col items-start space-y-2"
+              >
                 <div className="flex items-center space-x-2">
-                  {/* Mobile Number Image (Step 1 & 2) - Uses MOBILE_NUMBER_SIZE */}
-                  <Image
-                    src={step.numberImg}
-                    alt={`Step ${index + 1}`}
-                    width={MOBILE_NUMBER_SIZE}
-                    height={MOBILE_NUMBER_SIZE} 
-                    className="flex-shrink-0"
-                  />
+                  <span
+                    className="text-3xl font-bold leading-none scale-y-150"
+                    style={{ color: step.color }}
+                  >
+                    {step.id}
+                  </span>
                   <h3
                     className="text-[13px] font-semibold leading-tight"
                     style={{ color: instructionTextColor }}
@@ -171,17 +197,16 @@ const HowToUseSection = () => {
             ))}
           </div>
 
+          {/* Step 3 with Model Image */}
           <div className="flex flex-row items-center justify-between">
             <div className="flex flex-col items-start space-y-2 w-[70%]">
               <div className="flex items-center space-x-2">
-                {/* Mobile Number Image (Step 3) - Uses MOBILE_NUMBER_SIZE */}
-                <Image
-                  src={steps[2].numberImg}
-                  alt="Step 3"
-                  width={MOBILE_NUMBER_SIZE}
-                  height={MOBILE_NUMBER_SIZE}
-                  className="flex-shrink-0"
-                />
+                <span
+                  className="text-3xl font-bold leading-none scale-y-150"
+                  style={{ color: steps[2].color }}
+                >
+                  {steps[2].id}
+                </span>
                 <h3
                   className="text-[13px] font-semibold leading-tight"
                   style={{ color: instructionTextColor }}
@@ -197,17 +222,19 @@ const HowToUseSection = () => {
               </p>
             </div>
 
-            <div className="relative w-[160px] h-[150px] flex-shrink-0 self-center mb-0  ">
+            {/* Model Image (restored from previous version) */}
+            <div className="relative w-[160px] h-[150px] flex-shrink-0 self-center mb-0">
               <Image
                 src="/akriti-use-model.png"
                 alt="Model"
                 fill
-                className="object-contain scale-140 transform -translate-y-2 md:scale-150 md:transform md:-translate-x-10 "
+                className="object-contain scale-140 transform -translate-y-2 md:scale-150 md:transform md:-translate-x-10"
               />
             </div>
           </div>
         </div>
 
+        {/* For Best Results (Mobile) */}
         <div className="mt-5 text-left w-full">
           <h4
             className="text-sm font-semibold mb-1"
@@ -222,7 +249,7 @@ const HowToUseSection = () => {
                 className="text-[13px] leading-tight"
                 style={{ color: listTextColor }}
               >
-                  {item}
+                {item}
               </li>
             ))}
           </ul>

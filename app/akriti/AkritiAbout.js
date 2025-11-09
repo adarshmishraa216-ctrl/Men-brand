@@ -74,13 +74,13 @@ const AboutAakritiSection = () => {
           <div className="flex lg:hidden justify-center mb-5 w-full">
            <div 
     // MODIFIED: Added transform and -translate-y-8 (mobile/default)
-    className="relative w-[280px] sm:w-[500px] h-[300px] sm:h-[600px] transform translate-y-8" 
+    className="relative w-[280px] sm:w-[500px] h-[300px] sm:h-[600px] transform translate-y-5" 
 >
     <Image
         src="/akriti-girlimage2.png"
         alt="Girl holding Aakriti product"
         layout="fill"
-        objectFit="contain"
+        objectFit="contain scale-110"
     />
 </div>
           </div>

@@ -118,7 +118,7 @@ const FAQSection = () => {
                 >
                   <div 
                     className={`flex justify-between items-start pr-2 rounded-lg transition duration-300 shadow-md ${
-                        isOpen ? 'bg-[#E6EAE2] hover:bg-[#E6EAE2]' : 'bg-zinc-100 hover:bg-zinc-200' // Darker color for open state
+                        isOpen ? 'bg-zinc-100 hover:bg-zinc-100' : 'bg-zinc-100 bg-zinc-100' // Darker color for open state
                     } cursor-pointer`}
                     onClick={() => handleToggle(faq.id)}
                   >
