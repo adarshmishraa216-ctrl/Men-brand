@@ -32,7 +32,7 @@ const LovedByWomenSection = () => {
 
   return (
     <section 
-      className="relative w-full overflow-hidden flex flex-col items-center py-10"
+      className="relative w-full overflow-hidden flex flex-col items-center py-5"
     >
       <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         

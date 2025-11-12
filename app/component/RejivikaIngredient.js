@@ -36,7 +36,6 @@ const IngredientsSection = () => {
 
   // Renders the Tabs (Capsule/Gel Buttons)
   const renderTabs = () => (
-    // The tabs container itself is now flush left (no ml-0 needed if parent is flex-start)
     <div className="flex gap-4 mb-4">
       {["capsule", "gel"].map((tab) => (
         <button
@@ -64,10 +63,8 @@ const IngredientsSection = () => {
 
   // Renders the Content Table for the active tab
   const renderIngredientTable = (data) => (
-    // Outer div for styling (no w-full, allowing inner content to dictate width)
     <div className="h-auto bg-[#FFF2E1] p-5 rounded-xl shadow-inner">
-      {/* FIX: min-w-[300px] ensures content is wider than viewport, enabling scroll */}
-      <div className="grid grid-cols-[1fr_1fr_max-content] gap-y-3 font-rubik text-base min-w-[300px]"> 
+      <div className="grid grid-cols-[1fr_1fr_max-content] gap-y-3 font-rubik text-base min-w-[300px]">
         {data.map((item, index) => (
           <React.Fragment key={index}>
             <p className="font-medium text-left">{item.name}</p>
@@ -88,10 +85,10 @@ const IngredientsSection = () => {
         {/* --- DESKTOP VIEW: Side-by-Side (Visible on lg and up) --- */}
         <div className="hidden lg:flex flex-row items-start justify-between gap-12 w-full">
           
-          {/* Left Section (Heading, Tabs, Table) - Takes 55% width */}
+          {/* Left Section (Heading, Tabs, Table) */}
           <div className="flex flex-col w-[55%] shrink-0 pt-10">
             
-            {/* Heading Section (Text + Underline) */}
+            {/* Heading Section */}
             <div className="mb-6 w-full flex justify-start">
               <div className="flex flex-col items-start">
                 <h2
@@ -114,40 +111,35 @@ const IngredientsSection = () => {
                 />
               </div>
             </div>
-           <div className="tranform -translate-x-23">
-            {/* Tabs (Buttons) - ALIGNMENT FIXED */}
-            {renderTabs()}
 
-            {/* Ingredient Table Content - ALIGNMENT FIXED */}
-            {renderIngredientTable(ingredientData[activeTab])}
+            {/* ✅ Tabs, Table & Preservatives perfectly aligned */}
+            <div className="transform -translate-x-[23px]">
+              {renderTabs()}
+              {renderIngredientTable(ingredientData[activeTab])}
+              <p className="w-full text-left text-sm mt-4 text-gray-700">
+                {preservativesText}
+              </p>
             </div>
-            {/* Preservatives Note */}
-            <p className="w-full text-left text-sm mt-4 text-gray-700">
-              {preservativesText}
-            </p>
           </div>
-          {/* END of Left Section */}
 
-          {/* Right Section (Raw Materials Image) - Takes 45% width */}
+          {/* Right Section (Raw Materials Image) */}
           <div className="relative w-[45%] h-[450px] flex justify-center items-start pt-10">
             <Image
               src="/rejivika-ingridient-mainimg.png"
               alt="Ayurvedic Raw Materials"
               fill
-              className="object-contain scale-110 m-7 tranform translate-x-2 translate-y-5 "
+              className="object-contain scale-110 m-7 transform translate-x-2 translate-y-5"
               sizes="(max-width: 1000px) 0, 45vw"
             />
           </div>
         </div>
         {/* --- END DESKTOP VIEW --- */}
-         
-        
-        {/* --- MOBILE VIEW: Stacked and Centered (Hidden on lg and up) --- */}
+
+        {/* --- MOBILE VIEW --- */}
         <div className="flex flex-col items-center justify-center gap-6 lg:hidden">
           
-          {/* Side-by-Side Container for Heading and Image */}
+          {/* Side-by-Side Heading & Image */}
           <div className="flex w-full justify-between items-center px-4 mb-4">
-            {/* Left Side: Heading Section (Takes 65% width) */}
             <div className="flex flex-col items-start justify-center w-[65%]">
               <h2
                 className="text-left text-2xl" 
@@ -169,7 +161,6 @@ const IngredientsSection = () => {
               />
             </div>
 
-            {/* Right Side: Raw Materials Image (Takes 35% width) */}
             <div className="relative w-[35%] h-[120px] flex justify-center items-center">
               <Image
                 src="/rejivika-ingridient-mainimg.png"
@@ -179,19 +170,18 @@ const IngredientsSection = () => {
               />
             </div>
           </div>
-          {/* END Side-by-Side Container */}
 
-          {/* Tabs (Buttons) - Mobile - ALIGNMENT FIXED */}
+          {/* Tabs */}
           <div className="w-full px-4">
             {renderTabs()}
           </div>
 
-          {/* Ingredient Table Content - Mobile - HORIZONTAL SCROLL FIX */}
+          {/* Table */}
           <div className="w-full overflow-x-auto px-4 ">
             {renderIngredientTable(ingredientData[activeTab])}
           </div>
 
-          {/* Preservatives Note */}
+          {/* ✅ Preservatives aligned under table in mobile */}
           <p className="w-full text-left text-sm mt-4 text-gray-700 px-4">
             {preservativesText}
           </p>

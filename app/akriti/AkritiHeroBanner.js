@@ -105,11 +105,17 @@ const HeroBanner = () => {
                 backgroundColor: primaryButtonBg,
                 borderRadius: buttonRadius,
               }}
-              className="text-white text-base font-medium lg:py-[10px] md:py-2 sm:py-1 px-[26px] shadow-md hover:opacity-90 transition duration-200"
+              className="
+    text-white text-base font-medium 
+    py-3 px-[30px]                 /* ✅ increase height via padding */
+    lg:py-[12px] md:py-[10px]      /* optional responsive tuning */
+    shadow-md hover:opacity-90 transition duration-200 
+    whitespace-nowrap text-center min-w-[170px]
+  "
             >
               Buy Aakriti Now
             </Link>
-            
+
             {/* Secondary Button (Desktop Only: hidden lg:block) */}
             <Link
               href="/learn-more"
@@ -146,7 +152,7 @@ const HeroBanner = () => {
                 "radial-gradient(circle, rgba(255,105,180,0.9) 0%, rgba(255,105,180,0) 60%)",
               filter: "blur(60px)",
               borderRadius: "50%",
-              zIndex: 0, 
+              zIndex: 0,
               transform: "translate(70%, -20%)",
             }}
           ></div>

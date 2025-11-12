@@ -39,7 +39,7 @@ const HowToUseSection = () => {
 
   return (
     <section
-      className="relative w-full overflow-hidden flex flex-col items-center py-10"
+      className="relative  overflow-hidden flex flex-col items-center py-10 lg:mb-17"
       style={{ backgroundColor: sectionBgColor }}
     >
       {/* ===== Decorative Grey Background (Desktop only) ===== */}
@@ -55,15 +55,16 @@ const HowToUseSection = () => {
       </div>
 
       {/* ===== Desktop Version ===== */}
-      <div className="hidden lg:flex w-full flex-row items-start justify-between gap-12 px-8 py-20 max-w-[1400px] mx-auto relative z-10">
+      <div className="hidden lg:flex w-full flex-row items-start justify-between gap-12 px-8 py-10 max-w-[1400px] mx-auto relative z-10">
         {/* Left Image */}
         <div className="relative w-full lg:w-1/2 h-auto flex-shrink-0 flex justify-center items-end">
           <Image
             src="/akriti-use-model.png"
             alt="Woman holding product jar"
-            width={600} // or 550 depending on desired width
-            height={700} // keep a natural aspect ratio
-            className="object-contain transform scale-x-[-1] scale-150 transform translate-y-20"
+            width={600} 
+            height={700} 
+            className="object-contain transform scale-150 -scale-x-100 translate-y-20"
+
             priority
           />
         </div>
@@ -71,24 +72,14 @@ const HowToUseSection = () => {
         {/* Right Content */}
         <div className="w-full lg:w-1/2 flex flex-col items-start p-8 lg:p-16">
           {/* Heading with Wave Underline */}
-          <div className="mb-12">
-            <h2 className="text-3xl font-semibold text-gray-900 mb-3">
-              How to use
-            </h2>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="120"
-              height="10"
-              viewBox="0 0 120 10"
-              fill="none"
-            >
-              <path
-                d="M2 6C25 1 40 9 65 5C90 1 105 9 118 5"
-                stroke="#EC4899"
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
-            </svg>
+          <div className="mb-19">
+            <img
+              src="/Howtouse-head-new.svg"
+              alt="How to Use underline"
+              width="190"
+              height="57"
+              className="object-contain scale-140"
+            />
           </div>
 
           {/* Steps */}
@@ -140,25 +131,15 @@ const HowToUseSection = () => {
       </div>
 
       {/* ===== Mobile Version ===== */}
-      <div className="block lg:hidden w-full flex flex-col items-center px-6 py-6 relative z-10">
+      <div className="block lg:hidden w-full flex flex-col items-center px-6 py-0 relative z-10">
         <div className="flex flex-col items-center mb-4">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-2">
-            How to use
-          </h2>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="100"
-            height="8"
-            viewBox="0 0 100 8"
-            fill="none"
-          >
-            <path
-              d="M2 5C20 1 40 7 65 4C90 1 98 6 98 4"
-              stroke="#EC4899"
-              strokeWidth="3"
-              strokeLinecap="round"
+        <img
+              src="/Howtouse-head-new.svg"
+              alt="How to Use underline"
+              width="160"
+              height="57"
+              className="object-contain scale-140"
             />
-          </svg>
         </div>
 
         {/* Mobile Background Box */}

@@ -66,9 +66,9 @@ const IngredientsSection = () => {
             </div>
 
             {/* Preservatives Note */}
-            <p className="w-full text-left text-sm mt-4 text-gray-700">
-              {preservativesText}
-            </p>
+            <p className="text-left text-sm mt-[-10px] text-gray-700 -translate-x-[45px] translate-y-[20px] ">
+                {preservativesText}
+              </p>
           </div>
           {/* END of Left Column */}
 
